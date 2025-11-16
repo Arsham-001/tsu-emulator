@@ -167,22 +167,22 @@ def print_benchmark_summary(tsu_result: BenchmarkResult, mcmc_result: BenchmarkR
     
     if p_value < 0.05:
         if tsu_result.avg_energy < mcmc_result.avg_energy:
-            print("✓ TSU is STATISTICALLY SIGNIFICANTLY BETTER (p < 0.05)")
+            print("TSU is STATISTICALLY SIGNIFICANTLY BETTER (p < 0.05)")
         else:
-            print("⚠ MCMC is statistically significantly better (p < 0.05)")
+            print("MCMC is statistically significantly better (p < 0.05)")
     else:
-        print("⚠ No statistically significant difference (p >= 0.05)")
+        print("No statistically significant difference (p >= 0.05)")
     
     print(f"\n{'='*70}")
     print("CONCLUSION")
     print(f"{'='*70}")
     
     if tsu_result.win_rate >= 0.7:
-        print(f"🎉 TSU WINS {tsu_result.win_rate*100:.0f}% of trials - Clear advantage!")
+        print(f" TSU WINS {tsu_result.win_rate*100:.0f}% of trials - Clear advantage!")
     elif tsu_result.win_rate >= 0.5:
-        print(f"✓ TSU wins {tsu_result.win_rate*100:.0f}% of trials - Modest advantage")
+        print(f" TSU wins {tsu_result.win_rate*100:.0f}% of trials - Modest advantage")
     else:
-        print(f"⚠ TSU only wins {tsu_result.win_rate*100:.0f}% of trials - Needs improvement")
+        print(f" TSU only wins {tsu_result.win_rate*100:.0f}% of trials - Needs improvement")
     
     print(f"{'='*70}\n")
 
@@ -215,7 +215,7 @@ def full_benchmark():
         f.write(f"TSU Avg Best Energy: {tsu_result.avg_energy:.2f} ± {tsu_result.std_energy:.2f}\n")
         f.write(f"MCMC Avg Best Energy: {mcmc_result.avg_energy:.2f} ± {mcmc_result.std_energy:.2f}\n")
     
-    print("✓ Results saved to benchmark_results.txt")
+    print(" Results saved to benchmark_results.txt")
     
     return tsu_result, mcmc_result
 

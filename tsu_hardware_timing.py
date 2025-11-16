@@ -6,7 +6,6 @@ Based on published research from:
 - Thermodynamic computing literature
 - Analog stochastic circuit designs
 
-This gives HONEST projections, not made-up speedups.
 """
 
 import numpy as np
@@ -110,7 +109,7 @@ class HardwarePerformanceEstimator:
     def print_performance_report(self, n_samples: int, dimension: int,
                                 emulator_time: float, method_name: str = "TSU"):
         """
-        Print honest, physics-based performance projection.
+          physics-based performance projection.
         """
         results = self.estimate_sampling_time(n_samples, dimension, emulator_time)
         
@@ -147,7 +146,7 @@ class HardwarePerformanceEstimator:
 
 class ConservativeEstimator:
     """
-    Even MORE conservative estimates for investor skepticism.
+    Even MORE conservative estimates.
     Assumes worse-case scenarios.
     """
     
@@ -173,11 +172,9 @@ class ConservativeEstimator:
 
 
 def demo_honest_projections():
-    """
-    Show HONEST hardware projections with physics basis.
-    """
+    
     print("\n" + "="*70)
-    print("HONEST TSU HARDWARE PERFORMANCE PROJECTIONS")
+    print("TSU HARDWARE PERFORMANCE PROJECTIONS")
     print("="*70)
     
     # Realistic scenario
@@ -188,12 +185,11 @@ def demo_honest_projections():
     print(f"\nScenario: {n_samples} samples from {dimension}D distribution")
     print(f"Emulator time: {emulator_time:.2f}s")
     
-    # Optimistic but realistic
+
     print("\n1. REALISTIC PROJECTION (based on published research)")
     estimator = HardwarePerformanceEstimator()
     results = estimator.print_performance_report(n_samples, dimension, emulator_time)
-    
-    # Conservative
+
     print("\n2. CONSERVATIVE PROJECTION (pessimistic assumptions)")
     conservative = ConservativeEstimator()
     cons_results = conservative.estimate(n_samples, emulator_time)
@@ -201,76 +197,4 @@ def demo_honest_projections():
     print(f"   Speedup: {cons_results['speedup']:.0f}x")
     print(f"   Assumptions: {cons_results['assumptions']}")
     
-    # What to tell investors
-    print("\n" + "="*70)
-    print("FOR INVESTOR PRESENTATIONS:")
-    print("="*70)
-    print(f"""
-Conservative claim: "{cons_results['speedup']:.0f}x faster than emulator"
-Realistic claim:    "{results['realistic_speedup']:.0f}x faster than emulator"
-
-Key points:
-1. Speedup comes from parallel hardware, not magic
-2. Based on thermal relaxation times (~ns scale)
-3. Energy advantage is even bigger than speed
-4. Emulator proves ALGORITHMIC advantage, hardware adds speed
-
-What to say:
-"Our emulator runs on CPU and proves the algorithm works.
- Real TSU hardware will add ~{results['realistic_speedup']:.0f}x speedup through:
- - Parallel stochastic units ({results['parallel_units_used']} concurrent)
- - Nanosecond thermal dynamics (vs millisecond CPU simulation)
- - Near-thermodynamic-limit energy efficiency"
-""")
-    print("="*70)
-
-
-# Physical justification for the numbers
-def explain_physics():
-    """
-    Explain WHERE the numbers come from (for technical investors).
-    """
-    print("\n" + "="*70)
-    print("PHYSICAL BASIS FOR TIMING ESTIMATES")
-    print("="*70)
-    
-    print("""
-1. THERMAL RELAXATION TIME (~1 nanosecond)
-   - Electronic circuits: f ~ 1 GHz → τ ~ 1 ns
-   - RC time constants in analog circuits: τ = RC ~ 10^-9 s
-   - Published TSU designs: GHz-scale operation
-   - Source: Extropic architecture papers, analog stochastic computing
-
-2. EQUILIBRATION STEPS (~100 steps)
-   - Langevin dynamics: mixing time ~ 100-1000 steps
-   - We use 100 (conservative for hardware optimization)
-   - Each step = one thermal relaxation time
-   - Total equilibration: 100 × 1ns = 100ns
-
-3. PARALLEL UNITS (~1000)
-   - Modern chip: ~10mm² area
-   - Single stochastic unit: ~10μm² (analog circuits)
-   - Chip capacity: (10mm)² / (10μm)² = 1,000,000 units
-   - Realistic with routing/power: ~1000 active units
-   - Conservative estimate for first-gen hardware
-
-4. SPEEDUP CALCULATION
-   Emulator: 30s (simulating physics in Python)
-   Hardware: 100ns × (500 samples / 1000 parallel) = 50μs
-   Speedup: 30s / 50μs = 600,000x
    
-   BUT we report ~30,000x to be conservative (accounting for overhead)
-
-5. ENERGY EFFICIENCY
-   Thermodynamic limit: kT ln(2) ≈ 3 × 10^-21 J at 300K
-   Real circuits: ~1000x above limit = 3 fJ
-   We use 1 fJ (optimistic but achievable)
-   Compare to GPU: 300W × 1ms = 0.3 J per sample
-   Energy advantage: 0.3 J / 1 fJ = 3 × 10^14 (huge!)
-    """)
-    print("="*70)
-
-
-if __name__ == "__main__":
-    demo_honest_projections()
-    explain_physics()
