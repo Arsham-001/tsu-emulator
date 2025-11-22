@@ -21,6 +21,13 @@ from .core import (
 # Create a convenient alias for the main class
 from .core import ThermalSamplingUnit as TSU
 
+# Import hardware-accurate Gibbs sampling (matches Extropic X0 chip)
+from .gibbs import (
+    GibbsSampler,
+    GibbsConfig,
+    HardwareEmulator,
+)
+
 # Import and expose the high-level, user-friendly API
 from .api import (
     Backend,
@@ -41,6 +48,7 @@ from .api import (
 )
 
 __all__ = [
+    # Core Langevin dynamics
     "ThermalSamplingUnit",
     "TSU",
     "TSUConfig",
@@ -49,6 +57,10 @@ __all__ = [
     "TSUError",
     "ConfigurationError",
     "SamplingError",
+    # Hardware-accurate Gibbs sampling (Extropic-compatible)
+    "GibbsSampler",
+    "GibbsConfig",
+    "HardwareEmulator",
     # High-level API
     "Backend",
     "SamplingResult",
