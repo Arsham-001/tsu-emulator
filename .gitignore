@@ -44,6 +44,20 @@ Thumbs.db
 
 # Project specific
 visual_output/
+*.png
+*.jpg
+*.jpeg
+!docs/**/*.png
+!docs/**/*.jpg
+
+# Compiled documents
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
 
 # Personal technical documents - NOT FOR PUBLICATION
 # Keep existing docs but exclude paper drafts
@@ -52,4 +66,4 @@ docs/generate_paper.py
 docs/README.md
 
 # Allow the published PDF in main folder
-!tsu_technical_paper.pdf
+!tsu_technical_documentation.pdf

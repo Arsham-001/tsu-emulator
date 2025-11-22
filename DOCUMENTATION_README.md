@@ -1,14 +1,16 @@
-# TSU Technical Paper
+# TSU Technical Documentation
 
 **Title**: TSU: A Software Platform for Thermodynamic Sampling in Probabilistic Computing
 
 **Author**: Arsham Rocky  
 **Date**: November 22, 2025  
-**File**: `tsu_technical_paper.pdf` (493 KB, 9 pages)
+**File**: `tsu_technical_documentation.pdf` (493 KB, 9 pages)
 
-## Abstract
+*Note: This is technical documentation for implementation reference, not a peer-reviewed scientific publication.*
 
-This paper documents the mathematics, physics, and algorithms behind TSU. It covers:
+## Overview
+
+This documentation covers the mathematics, physics, and algorithms behind TSU:
 
 - **Theoretical Foundation**: Boltzmann distribution, Langevin dynamics, Gibbs sampling
 - **Bayesian Machine Learning**: Variational inference, uncertainty quantification

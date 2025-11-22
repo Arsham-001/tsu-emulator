@@ -12,9 +12,11 @@ TSU is a production-ready emulator for thermodynamic computing hardware, providi
 
 **Key Insight:** Physical thermal noise can be harnessed for efficient MCMC sampling, offering potential 10⁸× speedup over software implementations.
 
-## Technical Paper
+## 📚 Technical Documentation
 
-**[TSU Technical Paper](tsu_technical_paper.pdf)** - Comprehensive documentation of mathematics, physics, and algorithms (9 pages)
+**[Technical Documentation](tsu_technical_documentation.pdf)** - Comprehensive documentation of mathematics, physics, and algorithms (9 pages)
+
+*Note: This is technical documentation for implementation reference, not a peer-reviewed scientific publication.*
 
 - Theoretical foundation (Boltzmann distribution, Langevin dynamics, Gibbs sampling)
 - Bayesian neural networks with uncertainty quantification
@@ -310,7 +312,7 @@ tsu/
 
 ## Documentation
 
-- **[Technical Paper](tsu_technical_paper.pdf)** - Complete mathematical foundations
+- **[Technical Documentation](tsu_technical_documentation.pdf)** - Complete mathematical foundations
 - **[Benchmarks Guide](docs/BENCHMARKS.md)** - Comprehensive benchmark methodology
 - **[Bayesian NN Guide](docs/BAYESIAN_NN.md)** - ML toolkit documentation
 - **API Reference** - Inline docstrings in all modules
