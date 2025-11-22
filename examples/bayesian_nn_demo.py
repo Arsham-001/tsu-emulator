@@ -1,11 +1,8 @@
 """
-TSU vs THRML: Why Choose TSU for Machine Learning?
+Bayesian neural network demonstration.
 
-This example demonstrates TSU's competitive advantage:
-Easy-to-use Bayesian neural networks with uncertainty quantification.
-
-THRML provides low-level probabilistic graphical model tools.
-TSU provides high-level ML tools that engineers can use directly.
+Demonstrates uncertainty quantification and active learning
+with Bayesian neural networks on a regression task.
 """
 
 import numpy as np
@@ -14,9 +11,9 @@ import matplotlib.pyplot as plt
 
 
 def demonstrate_uncertainty_quantification():
-    """Show how TSU provides calibrated uncertainty out of the box."""
+    """Demonstrate Bayesian NN with uncertainty quantification on sparse data."""
     print("=" * 80)
-    print("TSU COMPETITIVE ADVANTAGE: Bayesian Neural Networks")
+    print("BAYESIAN NEURAL NETWORK DEMONSTRATION")
     print("=" * 80)
     
     # Generate training data (sparse sampling)
@@ -82,32 +79,8 @@ def demonstrate_uncertainty_quantification():
         x_val = x_pool[idx, 0]
         print(f"  {i+1}. x={x_val:+.3f}")
     
-    # Comparison table
     print("\n" + "=" * 80)
-    print("TSU vs THRML: Feature Comparison")
-    print("=" * 80)
-    
-    comparison = [
-        ("Feature", "TSU", "THRML"),
-        ("-" * 30, "-" * 20, "-" * 20),
-        ("Gibbs Sampling", "✓", "✓"),
-        ("Ising Models", "✓", "✓"),
-        ("Bayesian Neural Networks", "✓ (Easy API)", "✗"),
-        ("Uncertainty Quantification", "✓ (Built-in)", "Limited"),
-        ("Active Learning", "✓ (1 function)", "Manual"),
-        ("Target Users", "ML Engineers", "Physicists"),
-        ("Learning Curve", "Low", "High"),
-    ]
-    
-    for row in comparison:
-        print(f"{row[0]:32s} | {row[1]:20s} | {row[2]:20s}")
-    
-    print("\n" + "=" * 80)
-    print("WHY CHOOSE TSU:")
-    print("  1. Drop-in replacement for standard neural networks")
-    print("  2. Get uncertainty estimates for free")
-    print("  3. Built-in active learning for data efficiency")
-    print("  4. Production-ready API (not research code)")
+    print("Demonstration complete")
     print("=" * 80)
     
     # Try to create visualization

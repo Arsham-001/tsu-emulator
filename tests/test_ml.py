@@ -181,7 +181,8 @@ class TestBayesianNetwork:
         net = BayesianNetwork([3, 5, 2])
         x = np.random.randn(10, 3)
         
-        output = net.forward(x)
+        output = net.forward(x, return_activations=False)
+        assert isinstance(output, np.ndarray)
         
         assert output.shape == (10, 2)
         assert np.isfinite(output).all()
@@ -416,7 +417,8 @@ class TestEdgeCases:
         net = BayesianNetwork([2, 1])  # Single layer
         x = np.random.randn(10, 2)
         
-        output = net.forward(x)
+        output = net.forward(x, return_activations=False)
+        assert isinstance(output, np.ndarray)
         assert output.shape == (10, 1)
     
     def test_large_batch(self):
@@ -424,7 +426,8 @@ class TestEdgeCases:
         net = BayesianNetwork([3, 5, 2])
         x = np.random.randn(1000, 3)
         
-        output = net.forward(x)
+        output = net.forward(x, return_activations=False)
+        assert isinstance(output, np.ndarray)
         assert output.shape == (1000, 2)
         assert np.isfinite(output).all()
     

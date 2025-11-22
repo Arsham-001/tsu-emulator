@@ -2,22 +2,20 @@
 Probabilistic machine learning with thermodynamic sampling.
 
 Implements Bayesian neural networks with uncertainty quantification
-using hardware-accelerated Gibbs sampling. Provides high-level API
-for ML engineers building safety-critical systems requiring calibrated
-confidence estimates.
+using Gibbs sampling for weight posterior inference.
 
 Key features:
 - Posterior distributions over network weights
 - Predictive uncertainty via Monte Carlo sampling  
-- Temperature-scaled exploration for training
-- Compatible with standard supervised learning workflows
+- Temperature-scaled exploration during training
+- Variational inference with KL regularization
 
 Reference: "Practical Bayesian Learning of Neural Networks via 
            Adaptive MCMC" (Welling & Teh, 2011)
 """
 
 from abc import ABC, abstractmethod
-from typing import List, Tuple, Optional, Callable
+from typing import List, Tuple, Optional, Callable, Union
 import numpy as np
 from dataclasses import dataclass, field
 from .gibbs import GibbsSampler, GibbsConfig
@@ -240,7 +238,7 @@ class BayesianNetwork:
     
     def forward(self, x: np.ndarray, 
                 weights_list: Optional[List[Tuple[np.ndarray, np.ndarray]]] = None,
-                return_activations: bool = False) -> np.ndarray:
+                return_activations: bool = False) -> Union[np.ndarray, Tuple[np.ndarray, List[np.ndarray]]]:
         """Forward pass through network.
         
         Args:
@@ -343,7 +341,7 @@ class BayesianNetwork:
         # Total loss (negative ELBO)
         total_loss = data_loss + kl_weight * kl_loss / len(x)
         
-        return total_loss, data_loss, kl_loss
+        return float(total_loss), float(data_loss), float(kl_loss)
     
     def fit(self, x_train: np.ndarray, y_train: np.ndarray,
             n_epochs: int = 100,

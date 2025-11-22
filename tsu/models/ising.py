@@ -1,5 +1,5 @@
 """
-Ising Model Implementation - The Killer App for Thermodynamic Computing
+Ising Model Implementation - for Thermodynamic Computing
 
 This module implements Ising spin systems - THE canonical example for
 demonstrating thermodynamic computing advantages. Used in:
@@ -11,13 +11,14 @@ demonstrating thermodynamic computing advantages. Used in:
 Hamiltonian: H = -Σ_<i,j> J_ij s_i s_j - Σ_i h_i s_i
 where s_i ∈ {-1, +1} are spins
 
-This is EXACTLY what Extropic's THRML library showcases.
+
 """
 
 import numpy as np
 from typing import Optional, Tuple, List, Callable
 from dataclasses import dataclass
 import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 from ..gibbs import GibbsSampler, GibbsConfig
 
 
@@ -209,7 +210,7 @@ class IsingModel:
         
         T = self.config.temperature
         C = (mean_E2 - mean_E ** 2) / (T ** 2 * self.n_spins)
-        return C
+        return float(C)
     
     def susceptibility(self, samples: np.ndarray) -> float:
         """
@@ -364,7 +365,7 @@ class IsingGrid(IsingModel):
         return grid_state.flatten()
     
     def visualize(self, state: np.ndarray, title: str = "Ising Grid", 
-                  cmap: str = 'RdBu_r') -> plt.Figure:
+                  cmap: str = 'RdBu_r') -> Figure:
         """
         Visualize 2D spin configuration.
         
@@ -416,7 +417,7 @@ class IsingGrid(IsingModel):
 
 
 def demonstrate_phase_transition(sizes: List[int] = [8, 16, 32],
-                                 temperatures: np.ndarray = None) -> dict:
+                                 temperatures: Optional[np.ndarray] = None) -> dict:
     """
     Demonstrate Ising model phase transition - THE killer demo.
     

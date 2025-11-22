@@ -1,20 +1,9 @@
-# TSU Probabilistic ML Toolkit
+# Probabilistic Machine Learning
 
-## Why Choose TSU Over THRML?
+## Bayesian Neural Networks
 
-TSU provides **production-ready Bayesian neural networks** with uncertainty quantification - something THRML doesn't offer.
-
-### Feature Comparison
-
-| Feature | TSU | THRML |
-|---------|-----|-------|
-| Gibbs Sampling | ✓ | ✓ |
-| Ising Models | ✓ | ✓ |
-| **Bayesian Neural Networks** | **✓** | ✗ |
-| **Uncertainty Quantification** | **✓** | Limited |
-| **Active Learning** | **✓** | Manual |
-| Target Users | ML Engineers | Physicists |
-| Learning Curve | Low | High |
+This module implements Bayesian neural networks with uncertainty quantification
+using variational inference and Gibbs sampling.
 
 ## Quick Start: Bayesian Neural Network
 
@@ -64,7 +53,7 @@ Stochastic fully-connected layer.
 ## Applications
 
 ### 1. Safety-Critical Systems
-Get calibrated uncertainty for medical diagnosis, autonomous vehicles, etc.
+Calibrated uncertainty estimates for medical diagnosis, autonomous vehicles, etc.
 
 ```python
 predictions = model.predict_with_interval(x_test, confidence=0.99)
@@ -75,7 +64,7 @@ safe_predictions = predictions['mean'][high_confidence]
 ```
 
 ### 2. Active Learning
-Reduce labeling costs by 10x through intelligent sample selection.
+Intelligent sample selection based on predictive uncertainty.
 
 ```python
 # Train on small initial dataset
@@ -101,21 +90,13 @@ anomaly_threshold = np.percentile(result.std, 95)
 anomalies = result.std > anomaly_threshold
 ```
 
-## Why TSU's Approach Matters
+## Design Philosophy
 
-**THRML Philosophy:**
-- Low-level probabilistic graphical models
-- Factor graphs, message passing, belief propagation
-- Requires deep understanding of inference algorithms
-- Manual construction of probabilistic models
-
-**TSU Philosophy:**
-- High-level ML primitives (Bayesian NNs, uncertainty)
-- Drop-in replacement for standard neural networks
-- Works with existing ML workflows (train/predict)
+Provides high-level abstractions for Bayesian neural networks:
+- Standard train/predict interface
 - Automatic uncertainty quantification
-
-**Result:** TSU makes thermodynamic computing accessible to ML engineers, not just physicists.
+- Compatible with existing ML workflows
+- Built on thermodynamic sampling primitives
 
 ## Implementation Details
 
@@ -211,18 +192,10 @@ pytest tests/test_ml.py -v
 }
 ```
 
-## Competitive Positioning
+## Use Cases
 
-**When to use TSU:**
-- Building ML applications requiring uncertainty
-- Safety-critical systems (medical, autonomous)
-- Data-efficient learning (active learning)
-- Anomaly detection / OOD detection
-
-**When to use THRML:**
-- Low-level probabilistic programming
-- Custom inference algorithms
-- Research on thermodynamic computing primitives
-- Direct hardware access to probabilistic processors
-
-**Bottom Line:** TSU makes thermodynamic computing useful for real ML applications. THRML is for researchers building the foundations.
+Suitable for applications requiring:
+- Uncertainty quantification (safety-critical systems)
+- Calibrated confidence estimates (medical, autonomous systems)
+- Active learning (data-efficient training)
+- Out-of-distribution detection (anomaly detection)

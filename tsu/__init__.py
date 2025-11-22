@@ -46,6 +46,18 @@ from .ml import (
     PredictionResult,
 )
 
+# Import visualization utilities
+from .visualization import (
+    plot_predictions_with_uncertainty,
+    plot_uncertainty_vs_error,
+    plot_energy_landscape_2d,
+    plot_ising_state,
+    plot_phase_transition,
+    plot_sampling_diagnostics,
+    plot_active_learning_curve,
+    plot_interactive_energy_landscape,
+)
+
 # Import and expose the high-level, user-friendly API
 from .api import (
     Backend,
@@ -91,6 +103,15 @@ __all__ = [
     "StochasticLayer",
     "PosteriorSample",
     "PredictionResult",
+    # Visualization utilities
+    "plot_predictions_with_uncertainty",
+    "plot_uncertainty_vs_error",
+    "plot_energy_landscape_2d",
+    "plot_ising_state",
+    "plot_phase_transition",
+    "plot_sampling_diagnostics",
+    "plot_active_learning_curve",
+    "plot_interactive_energy_landscape",
     # High-level API
     "Backend",
     "SamplingResult",
