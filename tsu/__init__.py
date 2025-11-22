@@ -28,6 +28,14 @@ from .gibbs import (
     HardwareEmulator,
 )
 
+# Import energy-based models (Ising, Boltzmann machines, etc.)
+from .models import (
+    IsingModel,
+    IsingChain,
+    IsingGrid,
+    demonstrate_phase_transition,
+)
+
 # Import and expose the high-level, user-friendly API
 from .api import (
     Backend,
@@ -61,6 +69,11 @@ __all__ = [
     "GibbsSampler",
     "GibbsConfig",
     "HardwareEmulator",
+    # Energy-based models
+    "IsingModel",
+    "IsingChain",
+    "IsingGrid",
+    "demonstrate_phase_transition",
     # High-level API
     "Backend",
     "SamplingResult",
