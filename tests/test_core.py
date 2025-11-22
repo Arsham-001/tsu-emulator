@@ -152,16 +152,16 @@ if __name__ == "__main__":
     
     test_config = TestTSUConfig()
     test_config.test_valid_config()
-    print("✓ Config validation works")
+    print("[OK] Config validation works")
     
     test_gaussian = TestGaussianSampling()
     test_gaussian.test_sample_shape()
     test_gaussian.test_mean_approximately_correct()
-    print("✓ Gaussian sampling works")
+    print("[OK] Gaussian sampling works")
     
     test_pbit = TestProbabilisticBit()
     test_pbit.test_sample_shape()
     test_pbit.test_probability_approximately_correct()
-    print("✓ P-bit sampling works")
+    print("[OK] P-bit sampling works")
     
-    print("\n✓ All manual tests passed!")
+    print("\n[OK] All manual tests passed!")

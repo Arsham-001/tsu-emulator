@@ -86,5 +86,5 @@ def quick_demo():
     print(f"   P(1) = {bits.mean():.2f} (expected: 0.70)")
     
     print("\n" + "=" * 50)
-    print("✓ Quick demo complete!")
+    print("[OK] Quick demo complete!")
     print("  Run 'python -m tsu.demos' for the full demonstration.")

@@ -1,8 +1,8 @@
 import tsu
 import numpy as np
 
-print(f"✓ Successfully imported tsu package, version {tsu.__version__}!")
-print(f"✓ High-level API is available with {len(tsu.__all__)} components.")
+print(f"[OK] Successfully imported tsu package, version {tsu.__version__}!")
+print(f"[OK] High-level API is available with {len(tsu.__all__)} components.")
 print()
 
 # 1. Simple functional API
@@ -38,4 +38,4 @@ print(f"   Generated {len(multimodal_samples)} samples from a {len(centers)}-mod
 print(f"   Sample shape: {multimodal_samples.shape}")
 print()
 
-print("✓ All high-level API calls are working correctly!")
+print("[OK] All high-level API calls are working correctly!")

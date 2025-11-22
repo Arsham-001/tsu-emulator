@@ -332,7 +332,7 @@ if __name__ == "__main__":
     print(f"   Mean: {stats['mean']:.3f} (expected: 0.000)")
     print(f"   Std:  {stats['std']:.3f} (expected: 1.000)")
     print(f"   KS test p-value: {stats['ks_pvalue']:.3f}")
-    print(f"   Passes: {'✓' if stats['passes_ks_test'] else '✗'}\n")
+    print(f"   Passes: {'[OK]' if stats['passes_ks_test'] else '[FAIL]'}\n")
     
     # Test 2: Probabilistic bit
     print("2. Probabilistic Bit (p=0.7)")
@@ -340,7 +340,7 @@ if __name__ == "__main__":
     stats = validate_distribution(pbit_samples, 'bernoulli', {'p': 0.7})
     print(f"   Empirical prob: {stats['empirical_prob']:.3f} (expected: 0.700)")
     print(f"   Error: {stats['error']:.3f}")
-    print(f"   Passes: {'✓' if stats['passes_test'] else '✗'}\n")
+    print(f"   Passes: {'[OK]' if stats['passes_test'] else '[FAIL]'}\n")
     
     # Test 3: Probabilistic neuron
     print("3. Probabilistic Neuron")
@@ -366,40 +366,40 @@ if __name__ == "__main__":
     print("\n[Test 1] Negative temperature")
     try:
         config = TSUConfig(temperature=-1.0)
-        print("  ❌ Failed to catch negative temperature")
+        print("  [ERROR] Failed to catch negative temperature")
         test_failed += 1
     except ConfigurationError as e:
-        print(f"  ✓ Caught error: {e}")
+        print(f"  [OK] Caught error: {e}")
         test_passed += 1
     
     # Test 2: Invalid dt (too large)
     print("\n[Test 2] Invalid time step (dt > 0.1)")
     try:
         config = TSUConfig(dt=0.5)
-        print("  ❌ Failed to catch invalid dt")
+        print("  [ERROR] Failed to catch invalid dt")
         test_failed += 1
     except ConfigurationError as e:
-        print(f"  ✓ Caught error: {e}")
+        print(f"  [OK] Caught error: {e}")
         test_passed += 1
     
     # Test 3: Negative friction
     print("\n[Test 3] Negative friction")
     try:
         config = TSUConfig(friction=-0.5)
-        print("  ❌ Failed to catch negative friction")
+        print("  [ERROR] Failed to catch negative friction")
         test_failed += 1
     except ConfigurationError as e:
-        print(f"  ✓ Caught error: {e}")
+        print(f"  [OK] Caught error: {e}")
         test_passed += 1
     
     # Test 4: Negative n_steps
     print("\n[Test 4] Negative n_steps")
     try:
         config = TSUConfig(n_steps=-10)
-        print("  ❌ Failed to catch negative n_steps")
+        print("  [ERROR] Failed to catch negative n_steps")
         test_failed += 1
     except ConfigurationError as e:
-        print(f"  ✓ Caught error: {e}")
+        print(f"  [OK] Caught error: {e}")
         test_passed += 1
     
     # Test 5: Invalid probability (too high)
@@ -407,10 +407,10 @@ if __name__ == "__main__":
     try:
         tsu = ThermalSamplingUnit()
         tsu.p_bit(prob=1.5)
-        print("  ❌ Failed to catch invalid probability")
+        print("  [ERROR] Failed to catch invalid probability")
         test_failed += 1
     except ConfigurationError as e:
-        print(f"  ✓ Caught error: {e}")
+        print(f"  [OK] Caught error: {e}")
         test_passed += 1
     
     # Test 6: Invalid probability (too low)
@@ -418,10 +418,10 @@ if __name__ == "__main__":
     try:
         tsu = ThermalSamplingUnit()
         tsu.p_bit(prob=-0.5)
-        print("  ❌ Failed to catch invalid probability")
+        print("  [ERROR] Failed to catch invalid probability")
         test_failed += 1
     except ConfigurationError as e:
-        print(f"  ✓ Caught error: {e}")
+        print(f"  [OK] Caught error: {e}")
         test_passed += 1
     
     # Test 7: Negative n_samples in p_bit
@@ -429,10 +429,10 @@ if __name__ == "__main__":
     try:
         tsu = ThermalSamplingUnit()
         tsu.p_bit(prob=0.5, n_samples=-5)
-        print("  ❌ Failed to catch negative n_samples")
+        print("  [ERROR] Failed to catch negative n_samples")
         test_failed += 1
     except ConfigurationError as e:
-        print(f"  ✓ Caught error: {e}")
+        print(f"  [OK] Caught error: {e}")
         test_passed += 1
     
     # Test 8: Negative sigma in sample_gaussian
@@ -440,10 +440,10 @@ if __name__ == "__main__":
     try:
         tsu = ThermalSamplingUnit()
         tsu.sample_gaussian(sigma=-1.0)
-        print("  ❌ Failed to catch negative sigma")
+        print("  [ERROR] Failed to catch negative sigma")
         test_failed += 1
     except ConfigurationError as e:
-        print(f"  ✓ Caught error: {e}")
+        print(f"  [OK] Caught error: {e}")
         test_passed += 1
     
     # Test 9: Negative n_samples in sample_gaussian
@@ -451,10 +451,10 @@ if __name__ == "__main__":
     try:
         tsu = ThermalSamplingUnit()
         tsu.sample_gaussian(n_samples=-10)
-        print("  ❌ Failed to catch negative n_samples")
+        print("  [ERROR] Failed to catch negative n_samples")
         test_failed += 1
     except ConfigurationError as e:
-        print(f"  ✓ Caught error: {e}")
+        print(f"  [OK] Caught error: {e}")
         test_passed += 1
     
     # Test 10: Negative n_samples in sample_from_energy
@@ -462,10 +462,10 @@ if __name__ == "__main__":
     try:
         tsu = ThermalSamplingUnit()
         tsu.sample_from_energy(lambda x: np.sum(x**2), np.array([0]), n_samples=-1)
-        print("  ❌ Failed to catch negative n_samples")
+        print("  [ERROR] Failed to catch negative n_samples")
         test_failed += 1
     except SamplingError as e:
-        print(f"  ✓ Caught error: {e}")
+        print(f"  [OK] Caught error: {e}")
         test_passed += 1
     
     # Test 11: Valid configuration (should not raise)
@@ -473,10 +473,10 @@ if __name__ == "__main__":
     try:
         config = TSUConfig(temperature=1.0, dt=0.01, friction=1.0, 
                           n_burnin=100, n_steps=500)
-        print("  ✓ Valid configuration accepted")
+        print("  [OK] Valid configuration accepted")
         test_passed += 1
     except Exception as e:
-        print(f"  ❌ Failed: {e}")
+        print(f"  [ERROR] Failed: {e}")
         test_failed += 1
     
     # Test 12: Valid p_bit call (should not raise)
@@ -484,10 +484,10 @@ if __name__ == "__main__":
     try:
         tsu = ThermalSamplingUnit()
         samples = tsu.p_bit(prob=0.5, n_samples=5)
-        print(f"  ✓ Generated {len(samples)} valid samples")
+        print(f"  [OK] Generated {len(samples)} valid samples")
         test_passed += 1
     except Exception as e:
-        print(f"  ❌ Failed: {e}")
+        print(f"  [ERROR] Failed: {e}")
         test_failed += 1
     
     # Test 13: Valid sample_gaussian call (should not raise)
@@ -495,20 +495,20 @@ if __name__ == "__main__":
     try:
         tsu = ThermalSamplingUnit()
         samples = tsu.sample_gaussian(mu=0, sigma=1, n_samples=10)
-        print(f"  ✓ Generated {len(samples)} valid samples")
+        print(f"  [OK] Generated {len(samples)} valid samples")
         test_passed += 1
     except Exception as e:
-        print(f"  ❌ Failed: {e}")
+        print(f"  [ERROR] Failed: {e}")
         test_failed += 1
     
     # Summary
     print("\n" + "="*70)
     print("TEST SUMMARY")
     print("="*70)
-    print(f"Tests Passed: {test_passed}/13 ✓")
+    print(f"Tests Passed: {test_passed}/13 [OK]")
     print(f"Tests Failed: {test_failed}/13")
     
     if test_failed == 0:
-        print("\n🎉 ALL ERROR HANDLING TESTS PASSED!")
+        print("\n ALL ERROR HANDLING TESTS PASSED!")
     else:
-        print(f"\n⚠ {test_failed} test(s) failed")
+        print(f"\n[WARNING] {test_failed} test(s) failed")

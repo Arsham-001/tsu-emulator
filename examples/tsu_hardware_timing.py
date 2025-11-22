@@ -128,7 +128,7 @@ class HardwarePerformanceEstimator:
         
         print(f"\nSpeedup vs Emulator:")
         print(f"  Sequential: {results['naive_speedup']:.0f}x faster")
-        print(f"  Realistic:  {results['realistic_speedup']:.0f}x faster ⭐")
+        print(f"  Realistic:  {results['realistic_speedup']:.0f}x faster *")
         
         print(f"\nEnergy Efficiency:")
         print(f"  TSU energy: {results['energy_joules']*1e12:.2f} pJ")

@@ -278,7 +278,7 @@ def create_plotly_mode_visualization(tsu_samples, mcmc_samples, dist, save_path=
     )
     
     fig.write_html(save_path)
-    print(f"  ✓ 2D mode visualization saved: {save_path}")
+    print(f"  [OK] 2D mode visualization saved: {save_path}")
     return fig
 
 
@@ -374,7 +374,7 @@ def create_plotly_energy_comparison(tsu_quality, mcmc_quality, save_path='tsu_en
     )
     
     fig.write_html(save_path)
-    print(f"  ✓ Energy comparison chart saved: {save_path}")
+    print(f"  [OK] Energy comparison chart saved: {save_path}")
     return fig
 
 
@@ -450,18 +450,18 @@ def analyze_results(tsu_samples, mcmc_samples, tsu_quality, mcmc_quality, dist,
     wins = sum([tsu_wins_energy, tsu_wins_modes, tsu_wins_spread])
     
     if tsu_wins_energy:
-        print(f"✓ TSU found lower minimum energy: {tsu_quality['min_energy']:.3f} vs {mcmc_quality['min_energy']:.3f}")
+        print(f"[OK] TSU found lower minimum energy: {tsu_quality['min_energy']:.3f} vs {mcmc_quality['min_energy']:.3f}")
     if tsu_wins_modes:
-        print(f"✓ TSU found more modes: {tsu_quality['modes_found']}/3 vs {mcmc_quality['modes_found']}/3")
+        print(f"[OK] TSU found more modes: {tsu_quality['modes_found']}/3 vs {mcmc_quality['modes_found']}/3")
     if tsu_wins_spread:
-        print(f"✓ TSU has better energy distribution: σ={tsu_quality['std_energy']:.3f} vs {mcmc_quality['std_energy']:.3f}")
+        print(f"[OK] TSU has better energy distribution: σ={tsu_quality['std_energy']:.3f} vs {mcmc_quality['std_energy']:.3f}")
     
     if wins == 0:
-        print("⚠ Results are comparable between TSU and classical MCMC on this problem instance")
+        print("[WARNING] Results are comparable between TSU and classical MCMC on this problem instance")
     elif wins == 3:
-        print("🎉 TSU OUTPERFORMS classical MCMC on all metrics")
+        print(" TSU OUTPERFORMS classical MCMC on all metrics")
     else:
-        print(f"✓ TSU shows {wins}/3 metric advantages over classical MCMC")
+        print(f"[OK] TSU shows {wins}/3 metric advantages over classical MCMC")
     
     print("\n[6] RESEARCH INSIGHTS")
     print("-" * 80)
@@ -637,14 +637,14 @@ def demo_continuous_sampling():
         
         print(f"\nTSU win rate: {tsu_wins}/3 ({tsu_wins/3*100:.0f}%)")
         if tsu_wins >= 2:
-            print("✓ Results are reproducible")
+            print("[OK] Results are reproducible")
         else:
-            print("⚠ Results vary - run more trials for confirmation")
+            print("[WARNING] Results vary - run more trials for confirmation")
         
-        print("\n✓ Visualization saved to: tsu_continuous_sampling_demo.png\n")
+        print("\n[OK] Visualization saved to: tsu_continuous_sampling_demo.png\n")
     
     except Exception as e:
-        print(f"\n❌ ERROR: Demo failed with: {e}")
+        print(f"\n[ERROR] ERROR: Demo failed with: {e}")
         print("\nThis could be due to:")
         print("  - Invalid parameters")
         print("  - Numerical instability")
@@ -717,7 +717,7 @@ def demo_bayesian_inference():
     print(f"  Hardware time:     {hw_explain['hardware_time_us']:.2f} μs")
     print(f"  Speedup:           {tsu_time/hardware_time:.0f}x")
     
-    print("\n✓ TSU successfully sampled Bayesian posterior")
+    print("\n[OK] TSU successfully sampled Bayesian posterior")
     print("  Real hardware would enable real-time Bayesian inference")
     print("=" * 70 + "\n")
 
