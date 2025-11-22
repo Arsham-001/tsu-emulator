@@ -36,6 +36,16 @@ from .models import (
     demonstrate_phase_transition,
 )
 
+# Import probabilistic ML toolkit (Bayesian neural networks)
+from .ml import (
+    BayesianNetwork,
+    BayesianRegressor,
+    BayesianLinear,
+    StochasticLayer,
+    PosteriorSample,
+    PredictionResult,
+)
+
 # Import and expose the high-level, user-friendly API
 from .api import (
     Backend,
@@ -74,6 +84,13 @@ __all__ = [
     "IsingChain",
     "IsingGrid",
     "demonstrate_phase_transition",
+    # Probabilistic ML toolkit
+    "BayesianNetwork",
+    "BayesianRegressor",
+    "BayesianLinear",
+    "StochasticLayer",
+    "PosteriorSample",
+    "PredictionResult",
     # High-level API
     "Backend",
     "SamplingResult",
