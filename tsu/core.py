@@ -86,9 +86,6 @@ class ThermalSamplingUnit:
             x_plus[i] += eps
             x_minus = x.copy()
             x_minus[i] -= eps
-            # Ensure energy_fn returns a scalar (float). Many energy functions
-            # may return a 1-element numpy array; float(...) converts that to a
-            # Python float safely.
             val_plus = float(energy_fn(x_plus))
             val_minus = float(energy_fn(x_minus))
             grad[i] = (val_plus - val_minus) / (2 * eps)
@@ -171,15 +168,10 @@ class ThermalSamplingUnit:
         if n_samples <= 0:
             raise ConfigurationError(f"n_samples must be positive, got {n_samples}")
 
-        # Avoid log(0) for edge probabilities 0 or 1 by clipping to a tiny
-        # nonzero range. This keeps the API convenient while preventing math
-        # errors.
         prob_clipped = float(np.clip(prob, 1e-10, 1 - 1e-10))
         
         # For efficiency, use small state space
         def energy(x):
-            # Smooth approximation for continuous sampling. Convert x to a
-            # scalar in case it's passed as a 1-element array.
             x0 = float(np.atleast_1d(x)[0])
             x_clipped = float(np.clip(x0, 1e-10, 1 - 1e-10))
             return -np.log(prob_clipped) * x_clipped - np.log(1 - prob_clipped) * (1 - x_clipped)
@@ -188,7 +180,6 @@ class ThermalSamplingUnit:
         x_init = np.array([prob_clipped])
         result = self.sample_from_energy(energy, x_init, n_samples)
         
-        # Handle tuple return when return_trajectory is used (shouldn't happen here)
         if isinstance(result, tuple):
             samples = result[0]
         else:
@@ -226,7 +217,6 @@ class ThermalSamplingUnit:
         x_init = np.array([mu])
         result = self.sample_from_energy(energy, x_init, n_samples)
         
-        # Handle tuple return when return_trajectory is used (shouldn't happen here)
         if isinstance(result, tuple):
             samples = result[0]
         else:
@@ -252,7 +242,6 @@ class ThermalSamplingUnit:
         x_init = np.array([0.0])
         result = self.sample_from_energy(energy, x_init, n_samples)
         
-        # Handle tuple return when return_trajectory is used (shouldn't happen here)
         if isinstance(result, tuple):
             samples_cont = result[0]
         else:

@@ -697,7 +697,6 @@ def demo_bayesian_inference():
     result = tsu.sample_from_energy(log_posterior, theta_init, n_samples)
     tsu_time = time.time() - start
     
-    # Handle tuple return (shouldn't happen with return_trajectory=False, but guard for safety)
     if isinstance(result, tuple):
         tsu_samples = result[0]
     else:

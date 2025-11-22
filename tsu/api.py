@@ -85,7 +85,6 @@ class Sampler(ABC):
         import time
         start = time.time()
         
-        # TODO: Route to appropriate backend
         if self.backend == Backend.EMULATOR:
             x_init = self._get_initial_state()
             result = self._tsu.sample_from_energy(
@@ -93,7 +92,6 @@ class Sampler(ABC):
                 x_init, 
                 n_samples=n
             )
-            # Handle both tuple and ndarray returns
             if isinstance(result, tuple):
                 samples = result[0]
             else:
@@ -221,7 +219,6 @@ def compare_samplers(distribution, methods: List[str] = ['tsu', 'mcmc'],
             result = sampler.sample(n_samples, return_metadata=True)
             results['tsu'] = result
         elif method == 'mcmc':
-            # TODO: Implement classical MCMC baseline
             pass
     
     return results
