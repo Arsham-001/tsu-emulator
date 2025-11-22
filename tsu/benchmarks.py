@@ -9,7 +9,7 @@ import time
 from typing import Dict, List, Tuple
 from dataclasses import dataclass
 
-from tsu_proper_demo import MultimodalDistribution
+from tsu.demos import MultimodalDistribution
 
 
 @dataclass

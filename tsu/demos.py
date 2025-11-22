@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
-from tsu_core import ThermalSamplingUnit, TSUConfig
+from tsu.core import ThermalSamplingUnit, TSUConfig
 
 
 def calculate_hardware_time(n_samples: int, verbose: bool = False):

@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 ### 5-Minute Demo
 ```python
-from tsu_core import ThermalSamplingUnit
+import tsu
 
 # Create TSU
 tsu = ThermalSamplingUnit()
@@ -38,7 +38,7 @@ print(f"Empirical probability: {bits.mean():.2f}")
 
 ### Run Full Demo
 ```bash
-python tsu_proper_demo.py
+python -m tsu.demos
 ```
 
 **Expected output:**
@@ -61,8 +61,8 @@ TSU WINS - Better exploration of multimodal distribution
 
 Run reliable benchmarks:
 ```bash
-python tsu_benchmark.py --quick  # 3 trials (~2 min)
-python tsu_benchmark.py          # 10 trials (~10 min)
+python -m tsu.benchmarks --quick  # 3 trials (~2 min)
+python -m tsu.benchmarks          # 10 trials (~10 min)
 ```
 
 **Results on multimodal sampling (10D, 3 modes):**
@@ -123,4 +123,3 @@ MIT License - See LICENSE file
 ---
 
 **Built for the thermodynamic computing**
-

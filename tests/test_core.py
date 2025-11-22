@@ -8,8 +8,7 @@ import numpy as np
 from scipy import stats
 
 import sys
-sys.path.insert(0, '..')  # Add parent directory to path
-from tsu_core import (
+from tsu.core import (
     ThermalSamplingUnit, 
     TSUConfig, 
     ConfigurationError,
