@@ -12,7 +12,7 @@ TSU is a production-ready emulator for thermodynamic computing hardware, providi
 
 **Key Insight:** Physical thermal noise can be harnessed for efficient MCMC sampling, offering potential 10⁸× speedup over software implementations.
 
-## 📚 Technical Documentation
+## Technical Documentation
 
 **[Technical Documentation](tsu_technical_documentation.pdf)** - Comprehensive documentation of mathematics, physics, and algorithms (9 pages)
 
