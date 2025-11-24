@@ -1,3 +1,9 @@
+"""
+NOTE: Primary build configuration has moved to pyproject.toml.
+setup.py retained for backward compatibility and tooling compatibility.
+Do not remove existing functionality.
+"""
+
 from setuptools import setup, find_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:

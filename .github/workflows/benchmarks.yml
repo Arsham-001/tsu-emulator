@@ -1,0 +1,30 @@
+name: Benchmarks
+on:
+  schedule:
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install project
+        run: |
+          pip install -e .
+      - name: Run quick benchmarks
+        run: |
+          python -m tsu.benchmarks.runner --quick
+      - name: Archive benchmark output
+        run: |
+          mkdir -p bench_artifacts
+          cp -r visual_output bench_artifacts || true
+      - name: Upload benchmark artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmarks
+          path: bench_artifacts

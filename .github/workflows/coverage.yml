@@ -1,0 +1,32 @@
+name: Coverage
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: |
+          pip install -e .[dev]
+      - name: Run coverage
+        run: |
+          pytest --cov=tsu --cov-report=xml --cov-report=term
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-xml
+          path: coverage.xml
+
+# OPTIONAL: If you plan to use Codecov, uncomment below and add repository to Codecov.
+#      - name: Upload to Codecov
+#        uses: codecov/codecov-action@v3
+#        with:
+#          files: coverage.xml
+#          fail_ci_if_error: true

@@ -1,0 +1,97 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tsu-platform"
+version = "0.1.0"
+description = "Thermodynamic Sampling Unit emulator for probabilistic computing (Langevin + Gibbs + Bayesian ML + Ising optimization)."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Arsham Rocky", email = "arsham.rocky21@gmail.com" }
+]
+keywords = [
+    "thermodynamic-computing",
+    "probabilistic-computing",
+    "bayesian-ml",
+    "uncertainty",
+    "gibbs-sampling",
+    "langevin-dynamics",
+    "ising-model",
+    "mcmc",
+    "energy-based-models"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.9",
+    "matplotlib>=3.6"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.2",
+    "pytest-cov>=4.0.0",
+    "black>=23.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+    "build",
+    "twine"
+]
+viz = [
+    "plotly>=5.18",
+    "pillow"
+]
+docs = [
+    "mkdocs>=1.5",
+    "mkdocs-material>=9.0",
+    "mkdocstrings[python]>=0.22"
+]
+
+[project.urls]
+Homepage = "https://github.com/Arsham-001/tsu-emulator"
+Repository = "https://github.com/Arsham-001/tsu-emulator"
+Issues = "https://github.com/Arsham-001/tsu-emulator/issues"
+Documentation = "https://github.com/Arsham-001/tsu-emulator"
+
+[project.scripts]
+tsu = "tsu.cli:main"
+
+[tool.black]
+line-length = 96
+
+[tool.flake8]
+max-line-length = 96
+extend-ignore = ["E203", "W503"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+strict_optional = true
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "tsu",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+]
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "tsu"
+]
