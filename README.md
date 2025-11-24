@@ -278,6 +278,10 @@ results = bench.run_all()
 - Calibration: 100% coverage on 95% intervals
 - Epistemic uncertainty: 3× increase in extrapolation regions
 
+<!-- BENCHMARK_SUMMARY_START -->
+(benchmark summary will auto-update here)
+<!-- BENCHMARK_SUMMARY_END -->
+
 ## Testing
 
 Run the complete test suite (121 tests):

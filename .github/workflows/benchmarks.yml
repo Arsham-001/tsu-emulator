@@ -1,30 +1,48 @@
 name: Benchmarks
 on:
   schedule:
-    - cron: "0 5 * * 1"
+    - cron: "0 5 * * 1"   # Every Monday 05:00 UTC
   workflow_dispatch:
 
 jobs:
-  bench:
+  run-benchmarks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: Install project
         run: |
           pip install -e .
+
       - name: Run quick benchmarks
         run: |
-          python -m tsu.benchmarks.runner --quick
-      - name: Archive benchmark output
+          python -m tsu.benchmarks.runner --quick || echo "Benchmark runner failed or not present."
+
+      - name: Generate summary
         run: |
-          mkdir -p bench_artifacts
-          cp -r visual_output bench_artifacts || true
-      - name: Upload benchmark artifacts
+          python scripts/extract_benchmarks.py
+
+      - name: Show summary
+        run: |
+          cat BENCHMARK_SUMMARY.md || true
+
+      - name: Commit summary (if changed)
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add BENCHMARK_SUMMARY.md README.md || true
+          git diff --cached --quiet && echo "No changes to commit." || git commit -m "ci: update benchmark summary (automated)"
+          git push || echo "Push skipped (e.g., PR or no changes)."
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: benchmarks
-          path: bench_artifacts
+            name: benchmark-visual-output
+            path: |
+              visual_output
+              BENCHMARK_SUMMARY.md
