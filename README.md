@@ -1,8 +1,11 @@
 # TSU: Thermodynamic Sampling Unit Emulator
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-121%20passing-brightgreen.svg)]()
+![License](https://img.shields.io/github/license/Arsham-001/tsu-emulator)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![Tests](https://github.com/Arsham-001/tsu-emulator/actions/workflows/tests.yml/badge.svg)
+![Style](https://github.com/Arsham-001/tsu-emulator/actions/workflows/style.yml/badge.svg)
+![Stars](https://img.shields.io/github/stars/Arsham-001/tsu-emulator?style=social)
+![Forks](https://img.shields.io/github/forks/Arsham-001/tsu-emulator?style=social)
 
 **A comprehensive software platform for probabilistic computing using thermodynamic sampling principles.**
 
