@@ -6,6 +6,7 @@
 ![Style](https://github.com/Arsham-001/tsu-emulator/actions/workflows/style.yml/badge.svg)
 ![Stars](https://img.shields.io/github/stars/Arsham-001/tsu-emulator?style=social)
 ![Forks](https://img.shields.io/github/forks/Arsham-001/tsu-emulator?style=social)
+![Benchmarks](https://github.com/Arsham-001/tsu-emulator/actions/workflows/benchmarks.yml/badge.svg)
 
 **A comprehensive software platform for probabilistic computing using thermodynamic sampling principles.**
 
