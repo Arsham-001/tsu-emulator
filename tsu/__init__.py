@@ -135,19 +135,22 @@ def quick_demo():
     """Run a quick demo of TSU capabilities from the package root."""
     print("TSU Platform Quick Demo")
     print("=" * 50)
-    
+
     tsu = ThermalSamplingUnit()
-    
+
     # Gaussian sampling
     print("\n1. Gaussian Sampling")
     samples = tsu.sample_gaussian(mu=0, sigma=1, n_samples=100)
-    print(f"   Generated {len(samples)} samples with Mean: {samples.mean():.3f}, Std: {samples.std():.3f}")
-    
+    sample_mean = samples.mean()
+    sample_std = samples.std()
+    print(f"   Generated {len(samples)} samples")
+    print(f"   Mean: {sample_mean:.3f}, Std: {sample_std:.3f}")
+
     # P-bit
     print("\n2. Probabilistic Bit")
     bits = tsu.p_bit(prob=0.7, n_samples=100)
     print(f"   P(1) = {bits.mean():.2f} (expected: 0.70)")
-    
+
     print("\n" + "=" * 50)
     print("[OK] Quick demo complete!")
     print("  Run 'python -m tsu.demos' for the full demonstration.")

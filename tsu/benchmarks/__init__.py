@@ -26,9 +26,9 @@ from .comparison import ComparisonBenchmark
 from .runner import BenchmarkRunner
 
 __all__ = [
-    'SamplingBenchmark',
-    'OptimizationBenchmark',
-    'MLBenchmark',
-    'ComparisonBenchmark',
-    'BenchmarkRunner',
+    "SamplingBenchmark",
+    "OptimizationBenchmark",
+    "MLBenchmark",
+    "ComparisonBenchmark",
+    "BenchmarkRunner",
 ]

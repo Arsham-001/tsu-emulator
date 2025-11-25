@@ -21,11 +21,13 @@ def main():
 
     if args.command == "sample":
         from tsu.core import ThermalSamplingUnit
+
         tsu = ThermalSamplingUnit()
         samples = tsu.sample_gaussian(mu=args.mu, sigma=args.sigma, n_samples=args.n)
         print("Samples:", samples)
     elif args.command == "version":
         from tsu import __version__
+
         print("TSU version:", __version__)
     else:
         parser.print_help()

@@ -32,7 +32,7 @@ fig = plot_predictions_with_uncertainty(
     xlabel="x",
     ylabel="sin(x)",
     save_path="visual_output/uncertainty_example.png",  # Saves to visual_output folder
-    show=False  # Set to True to display interactively
+    show=False,  # Set to True to display interactively
 )
 
 print("✓ Visualization saved to: visual_output/uncertainty_example.png")
@@ -40,4 +40,6 @@ print("  - Blue shaded regions: confidence intervals (1σ and 2σ)")
 print("  - Blue line: mean prediction")
 print("  - Green line: true function")
 print("  - Red dots: training data")
-print("\nNotice: Uncertainty grows in the gap between x=3 and x=7 where there's no training data!")
+print(
+    "\nNotice: Uncertainty grows in the gap between x=3 and x=7 where there's no training data!"
+)
