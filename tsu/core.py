@@ -312,7 +312,7 @@ def validate_distribution(
         results["expected_std"] = sigma
 
         # Kolmogorov-Smirnov test
-        ks_stat, p_value = stats.kstest(samples, lambda x: stats.norm.cdf(x, mu, sigma))
+        ks_stat, p_value = stats.kstest(samples, "norm", args=(mu, sigma))
         results["ks_statistic"] = ks_stat
         results["ks_pvalue"] = p_value
         results["passes_ks_test"] = p_value > alpha
