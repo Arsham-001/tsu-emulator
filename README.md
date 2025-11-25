@@ -373,18 +373,6 @@ tsu/
 - Direct hardware integration (Extropic THRML backend)
 - Extended applications (protein folding, quantum circuits)
 
-## Citation
-
-If you use TSU in your research, please cite:
-
-```bibtex
-@article{rocky2025tsu,
-  title={TSU: A Software Platform for Thermodynamic Sampling in Probabilistic Computing},
-  author={Rocky, Arsham},
-  year={2025},
-  url={https://github.com/Arsham-001/tsu-emulator}
-}
-```
 
 ## Contributing
 
