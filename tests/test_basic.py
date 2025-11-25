@@ -4,7 +4,8 @@ Run this first to verify your setup
 """
 
 import sys
-sys.path.insert(0, '..')
+
+sys.path.insert(0, "..")
 
 import numpy as np
 from tsu.core import ThermalSamplingUnit, TSUConfig
@@ -44,6 +45,7 @@ else:
 # Test 4: Can we create a probabilistic neuron?
 print("\nTest 4: Testing probabilistic neuron...")
 from tsu.core import ProbabilisticNeuron
+
 neuron = ProbabilisticNeuron(tsu)
 weights = np.array([0.5, -0.3])
 inputs = np.array([1.0, 0.5])

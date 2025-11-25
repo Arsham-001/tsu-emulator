@@ -122,7 +122,9 @@ def build_markdown(metrics: dict) -> str:
     lines.append("python -m tsu.benchmarks.runner --quick")
     lines.append("```")
     lines.append("")
-    lines.append("Full benchmark details: see `visual_output/` artifacts or run full mode without `--quick`.")
+    lines.append(
+        "Full benchmark details: see `visual_output/` artifacts or run full mode without `--quick`."
+    )
     return "\n".join(lines)
 
 

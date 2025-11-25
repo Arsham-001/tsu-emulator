@@ -10,9 +10,4 @@ thermodynamic computing capabilities:
 
 from .ising import IsingModel, IsingChain, IsingGrid, demonstrate_phase_transition
 
-__all__ = [
-    'IsingModel',
-    'IsingChain', 
-    'IsingGrid',
-    'demonstrate_phase_transition'
-]
+__all__ = ["IsingModel", "IsingChain", "IsingGrid", "demonstrate_phase_transition"]

@@ -11,28 +11,22 @@ Usage:
 from tsu_api import (
     # Enums
     Backend,
-    
     # Data classes
     SamplingResult,
-    
     # Base classes
     Sampler,
     OptimizationProblem,
     ProbabilisticLayer,
     ProbabilisticModel,
-    
     # Samplers
     GaussianSampler,
     MultimodalSampler,
     BayesianSampler,
-    
     # Optimization
     MaxCutProblem,
-    
     # Layers
     StochasticLinear,
     BernoulliActivation,
-    
     # Functions
     sample_gaussian,
     sample_multimodal,
@@ -48,28 +42,22 @@ __author__ = "TSU Research Team"
 __all__ = [
     # Enums
     "Backend",
-    
     # Data classes
     "SamplingResult",
-    
     # Base classes
     "Sampler",
     "OptimizationProblem",
     "ProbabilisticLayer",
     "ProbabilisticModel",
-    
     # Samplers
     "GaussianSampler",
     "MultimodalSampler",
     "BayesianSampler",
-    
     # Optimization
     "MaxCutProblem",
-    
     # Layers
     "StochasticLinear",
     "BernoulliActivation",
-    
     # Functions
     "sample_gaussian",
     "sample_multimodal",
